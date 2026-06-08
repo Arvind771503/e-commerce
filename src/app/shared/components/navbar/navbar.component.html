@@ -1,0 +1,17 @@
+<nav class="sticky top-0 z-40 bg-white border-b border-gray-200 px-6 py-3 flex items-center justify-between">
+    <span class="font-semibold text-indigo-600 text-lg">
+        Amazon
+    </span>
+    <div class="flex items-center gap-6">
+        <a routerLink="/" class="text-sm text-gray-600 hover:text-indigo-600">
+            Products
+        </a>
+        <a routerLink="/cart" class="relative flex items-center">
+            <lucide-icon [img]="ShoppingCart" class="w-5 h-5 text-gray-600 hover:text-indigo-600 transition" />
+            <span class="absolute -top-2 -right-2 bg-indigo-600 text-white
+          text-xs w-4 h-4 rounded-full flex items-center justify-center">
+                {{ cartCount() }}
+            </span>
+        </a>
+    </div>
+</nav>
