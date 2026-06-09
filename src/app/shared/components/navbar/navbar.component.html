@@ -1,17 +1,86 @@
-<nav class="sticky top-0 z-40 bg-white border-b border-gray-200 px-6 py-3 flex items-center justify-between">
-    <span class="font-semibold text-indigo-600 text-lg">
-        Amazon
-    </span>
-    <div class="flex items-center gap-6">
-        <a routerLink="/" class="text-sm text-gray-600 hover:text-indigo-600">
-            Products
+<nav class="sticky top-0 z-50 bg-white border-b border-border shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+
+        <!-- Logo -->
+        <a routerLink="/"
+           class="flex items-center gap-2 group">
+          <div class="w-8 h-8 bg-primary-600 rounded-btn flex items-center
+                      justify-center group-hover:bg-primary-700 transition-colors">
+            <lucide-icon [img]="ShoppingBagIcon" class="text-white" [size]="18" />
+          </div>
+          <span class="font-bold text-neutral-900 text-lg tracking-tight">
+            {{ appName }}
+          </span>
         </a>
-        <a routerLink="/cart" class="relative flex items-center">
-            <lucide-icon [img]="ShoppingCart" class="w-5 h-5 text-gray-600 hover:text-indigo-600 transition" />
-            <span class="absolute -top-2 -right-2 bg-indigo-600 text-white
-          text-xs w-4 h-4 rounded-full flex items-center justify-center">
-                {{ cartCount() }}
-            </span>
-        </a>
+
+        <!-- Desktop Nav Links -->
+        <div class="hidden sm:flex items-center gap-6">
+          <a routerLink="/"
+             routerLinkActive="text-primary-600 font-semibold"
+             [routerLinkActiveOptions]="{ exact: true }"
+             class="text-sm text-neutral-600 hover:text-primary-600 transition-colors">
+            {{ labels.PRODUCTS }}
+          </a>
+          <a routerLink="/cart"
+             routerLinkActive="text-primary-600 font-semibold"
+             class="relative flex items-center gap-1.5 text-sm text-neutral-600
+                    hover:text-primary-600 transition-colors">
+            <lucide-icon [img]="CartIcon" [size]="18" />
+            <span>{{ labels.CART }}</span>
+            @if (cartCount() > 0) {
+              <span class="absolute -top-2 -right-3 bg-primary-600 text-white
+                           text-[10px] font-bold w-4 h-4 rounded-full flex
+                           items-center justify-center">
+                {{ cartCount() > 99 ? '99+' : cartCount() }}
+              </span>
+            }
+          </a>
+        </div>
+
+        <!-- Mobile -->
+        <div class="flex sm:hidden items-center gap-3">
+          <a routerLink="/cart" class="relative p-1">
+            <lucide-icon [img]="CartIcon" [size]="22" class="text-neutral-700" />
+            @if (cartCount() > 0) {
+              <span class="absolute -top-1 -right-1 bg-primary-600 text-white
+                           text-[9px] font-bold w-4 h-4 rounded-full flex
+                           items-center justify-center">
+                {{ cartCount() > 99 ? '99+' : cartCount() }}
+              </span>
+            }
+          </a>
+          <button (click)="toggleMenu()"
+                  class="p-1 text-neutral-700 hover:text-primary-600 transition-colors"
+                  [attr.aria-label]="labels.TOGGLE_MENU">
+            @if (menuOpen()) {
+              <lucide-icon [img]="XIcon" [size]="22" />
+            } @else {
+              <lucide-icon [img]="MenuIcon" [size]="22" />
+            }
+          </button>
+        </div>
+
+      </div>
     </div>
-</nav>
+
+    <!-- Mobile Dropdown -->
+    @if (menuOpen()) {
+      <div class="sm:hidden border-t border-border bg-white px-4 py-3
+                  flex flex-col gap-3 animate-in slide-in-from-top-2 duration-200">
+        <a routerLink="/"
+           routerLinkActive="text-primary-600 font-semibold"
+           [routerLinkActiveOptions]="{ exact: true }"
+           (click)="toggleMenu()"
+           class="text-sm text-neutral-700 py-1">
+          {{ labels.PRODUCTS }}
+        </a>
+        <a routerLink="/cart"
+           routerLinkActive="text-primary-600 font-semibold"
+           (click)="toggleMenu()"
+           class="text-sm text-neutral-700 py-1">
+          {{ labels.CART }}
+        </a>
+      </div>
+    }
+  </nav>

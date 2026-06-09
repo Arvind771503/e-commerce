@@ -1,0 +1,10 @@
+<app-cart-table 
+    [items]="cartService.items()" 
+    [grandTotal]="cartService.grandTotal()" 
+    [totalItems]="cartService.totalItems()"
+    (increase)="cartService.updateQuantity($event, 1)" 
+    (decrease)="cartService.updateQuantity($event, -1)"
+    (remove)="cartService.removeFromCart($event)" 
+    (clear)="cartService.clearCart()" 
+    (browseClick)="goToProducts()" 
+/>

@@ -1,0 +1,145 @@
+@if (items().length === 0) {
+<app-empty-state [title]="emptyTitle" [message]="emptyMessage" [actionLabel]="browseLabel"
+    (actionClick)="browseClick.emit()" />
+} @else {
+
+<div class="flex flex-col gap-3 sm:hidden">
+    @for (item of items(); track item.product.id) {
+    <div class="bg-neutral-50 rounded-card p-3 flex gap-3">
+        <img [src]="item.product.image" [alt]="item.product.name"
+            class="w-16 h-16 rounded-xl object-cover shrink-0 border border-border" (error)="onImgError($event)" />
+        <div class="flex-1 min-w-0">
+            <p class="text-sm font-semibold text-neutral-800 truncate">
+                {{ item.product.name }}
+            </p>
+            <p class="text-xs text-neutral-400 mb-2">{{ item.product.category }}</p>
+            <div class="flex items-center justify-between">
+
+                <div class="flex items-center gap-2">
+                    <button (click)="decrease.emit(item.product.id)" class="w-6 h-6 rounded-lg border border-border bg-white flex
+                                   items-center justify-center hover:border-primary-400
+                                   transition-colors">
+                        <lucide-icon [img]="MinusIcon" [size]="11" class="text-neutral-600" />
+                    </button>
+                    <span class="text-sm font-semibold w-5 text-center text-neutral-800">
+                        {{ item.quantity }}
+                    </span>
+                    <button (click)="increase.emit(item.product.id)" class="w-6 h-6 rounded-lg border border-border bg-white flex
+                                   items-center justify-center hover:border-primary-400
+                                   transition-colors">
+                        <lucide-icon [img]="PlusIcon" [size]="11" class="text-neutral-600" />
+                    </button>
+                </div>
+
+                <div class="flex items-center gap-3">
+                    <span class="text-sm font-bold text-primary-600">
+                        ₹{{ (item.product.price * item.quantity).toLocaleString('en-IN') }}
+                    </span>
+                    <button (click)="remove.emit(item.product.id)"
+                        class="text-neutral-300 hover:text-error transition-colors">
+                        <lucide-icon [img]="TrashIcon" [size]="15" />
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    }
+</div>
+
+<div class="hidden sm:block overflow-x-auto rounded-card border border-border">
+    <table class="w-full text-sm">
+        <thead>
+            <tr class="bg-neutral-50 border-b border-border">
+                <th class="text-left px-5 py-3.5 text-xs font-semibold text-neutral-500 uppercase tracking-wide">
+                    {{ headers.PRODUCT }}
+                </th>
+                <th class="text-right px-5 py-3.5 text-xs font-semibold text-neutral-500 uppercase tracking-wide">
+                    {{ headers.PRICE }}
+                </th>
+                <th class="text-center px-5 py-3.5 text-xs font-semibold text-neutral-500 uppercase tracking-wide">
+                    {{ headers.QUANTITY }}
+                </th>
+                <th class="text-right px-5 py-3.5 text-xs font-semibold text-neutral-500 uppercase tracking-wide">
+                    {{ headers.TOTAL }}
+                </th>
+                <th class="px-5 py-3.5"></th>
+            </tr>
+        </thead>
+        <tbody class="bg-white divide-y divide-neutral-50">
+            @for (item of items(); track item.product.id) {
+            <tr class="hover:bg-neutral-50/50 transition-colors">
+                <td class="px-5 py-4">
+                    <div class="flex items-center gap-3">
+                        <img [src]="item.product.image" [alt]="item.product.name"
+                            class="w-12 h-12 rounded-xl object-cover border border-border"
+                            (error)="onImgError($event)" />
+                        <div>
+                            <p class="font-semibold text-neutral-800 line-clamp-1">
+                                {{ item.product.name }}
+                            </p>
+                            <p class="text-xs text-neutral-400">{{ item.product.category }}</p>
+                        </div>
+                    </div>
+                </td>
+                <td class="px-5 py-4 text-right text-neutral-600">
+                    ₹{{ item.product.price.toLocaleString('en-IN') }}
+                </td>
+                <td class="px-5 py-4">
+                    <div class="flex items-center justify-center gap-3">
+                        <button (click)="decrease.emit(item.product.id)" class="w-7 h-7 rounded-btn border border-border flex
+                                     items-center justify-center hover:border-primary-400
+                                     transition-colors">
+                            <lucide-icon [img]="MinusIcon" [size]="13" class="text-neutral-600" />
+                        </button>
+                        <span class="font-semibold w-5 text-center text-neutral-800">
+                            {{ item.quantity }}
+                        </span>
+                        <button (click)="increase.emit(item.product.id)" class="w-7 h-7 rounded-btn border border-border flex
+                                     items-center justify-center hover:border-primary-400
+                                     transition-colors">
+                            <lucide-icon [img]="PlusIcon" [size]="13" class="text-neutral-600" />
+                        </button>
+                    </div>
+                </td>
+                <td class="px-5 py-4 text-right font-bold text-primary-600">
+                    ₹{{ (item.product.price * item.quantity).toLocaleString('en-IN') }}
+                </td>
+                <td class="px-5 py-4 text-right">
+                    <button (click)="remove.emit(item.product.id)"
+                        class="text-neutral-300 hover:text-error transition-colors p-1">
+                        <lucide-icon [img]="TrashIcon" [size]="16" />
+                    </button>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<div class="mt-6 flex flex-col sm:flex-row items-start sm:items-center
+                    justify-between gap-4 p-5 bg-primary-50 rounded-card
+                    border border-primary-100">
+    <div>
+        <p class="text-xs text-primary-400 font-medium uppercase tracking-wide mb-0.5">
+            {{ grandTotalLabel }} · {{ itemsCountLabel() }}
+        </p>
+        <p class="text-2xl font-bold text-primary-700">
+            ₹{{ grandTotal().toLocaleString('en-IN') }}
+        </p>
+    </div>
+    <div class="flex flex-col sm:flex-row gap-2 w-full sm:w-auto">
+        <button (click)="clear.emit()" class="px-4 py-2.5 text-sm font-medium text-neutral-500 bg-white
+                           border border-border rounded-btn hover:border-error/50
+                           hover:text-error transition-colors">
+            {{ clearCartLabel }}
+        </button>
+        <button class="flex items-center justify-center gap-2 px-5 py-2.5
+                           text-sm font-semibold text-white bg-primary-600 rounded-btn
+                           hover:bg-primary-700 transition-colors">
+            {{ checkoutLabel }}
+            <lucide-icon [img]="ArrowIcon" [size]="15" />
+        </button>
+    </div>
+</div>
+
+}

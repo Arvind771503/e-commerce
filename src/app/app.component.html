@@ -1,7 +1,12 @@
-<app-navbar />
-
-<main class="container mx-auto px-4 py-6">
-  <router-outlet />
-</main>
-
-<router-outlet />
+<div>
+    <app-navbar [cartCount]="cartState.totalItems()" />
+    <main class="flex-1">
+        <router-outlet />
+    </main>
+    <footer class="bg-white border-t border-border py-6 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p class="text-xs text-neutral-400">{{ footerText }}</p>
+        </div>
+    </footer>
+    <app-toast />
+</div>

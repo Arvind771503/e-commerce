@@ -1,0 +1,17 @@
+@if (ui.toast(); as toast) {
+<div class="fixed top-14 right-4 left-4 sm:left-auto sm:right-6 sm:w-80
+                 z-[100] flex items-start gap-3 px-4 py-3 rounded-card shadow-lg
+                 bg-white border border-border
+                 animate-in slide-in-from-bottom-4 duration-300" [class]="accentClass(toast.type)">
+
+    <lucide-icon [img]="iconFor(toast.type)" [size]="18" class="mt-0.5 shrink-0" [class]="iconClass(toast.type)" />
+
+    <p class="text-sm font-medium flex-1 leading-snug text-neutral-800">
+        {{ toast.message }}
+    </p>
+
+    <button (click)="ui.dismissToast()" class="shrink-0 text-neutral-400 hover:text-neutral-600 transition-colors">
+        <lucide-icon [img]="CloseIcon" [size]="16" />
+    </button>
+</div>
+}

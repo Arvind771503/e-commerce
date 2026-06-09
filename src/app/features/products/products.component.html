@@ -1,0 +1,81 @@
+<div class="min-h-screen bg-surface">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="mb-8">
+            <h1 class="text-2xl sm:text-3xl font-bold text-neutral-900">
+                {{ pageTitle }}
+            </h1>
+            <p class="text-neutral-500 mt-1 text-sm">
+                {{ pageSubtitle }}
+                <span class="font-semibold text-neutral-700">
+                    {{ productService.products().length }}
+                </span>
+                items
+            </p>
+        </div>
+        <div class="flex flex-col sm:flex-row gap-3 mb-6">
+            <div class="relative flex-1">
+                <lucide-icon [img]="SearchIcon" [size]="16"
+                    class="absolute left-3 top-1/2 -translate-y-1/2 text-neutral-400"/>
+                <input [placeholder]="searchPlaceholder" [value]="productService.searchQuery()"
+                    (input)="onSearch($event)" class="w-full min-w-[200px] pl-10 pr-10 py-2.5 text-sm bg-white border border-border
+                   rounded-btn focus:outline-none focus:ring-2 focus:ring-primary-500
+                   focus:border-transparent placeholder:text-neutral-400" />
+                @if (productService.searchQuery()) {
+                <button (click)="productService.clearSearch()" class="absolute right-3 top-1/2 -translate-y-1/2 text-neutral-400
+                     hover:text-neutral-600 transition-colors">
+                    <lucide-icon [img]="XIcon" [size]="15" />
+                </button>
+                }
+            </div>
+            <div class="flex gap-2 overflow-x-auto pb-1 sm:pb-0 scrollbar-hide flex-nowrap sm:flex-wrap">
+                @for (cat of productService.categories(); track cat) {
+                <button (click)="productService.filterByCategory(cat)" [class]="categoryBtnClass(cat)" class="shrink-0 px-4 py-2.5 text-xs font-semibold rounded-btn
+                     transition-all duration-150 whitespace-nowrap border">
+                    {{ cat }}
+                </button>
+                }
+            </div>
+        </div>
+
+        @if (!productService.loading() && !productService.error()) {
+        <p class="text-xs text-neutral-400 mb-4">
+            {{ showingText() }}
+            @if (productService.searchQuery()) {
+            <span class="text-neutral-500">
+                {{ forQueryText() }}
+            </span>
+            }
+        </p>
+        }
+
+        @if (productService.loading()) {
+        <app-loading-spinner />
+        }
+
+        @if (!productService.loading() && productService.error()) {
+        <div class="flex flex-col items-center justify-center py-20 text-center">
+            <p class="text-error font-semibold mb-1">{{ loadFailedLabel }}</p>
+            <p class="text-sm text-neutral-400 mb-4">{{ productService.error() }}</p>
+            <button (click)="productService.retryLoad()" class="px-4 py-2 bg-primary-600 text-white text-sm font-semibold
+                         rounded-btn hover:bg-primary-700 transition-colors">
+                {{ retryLabel }}
+            </button>
+        </div>
+        }
+
+        @if (!productService.loading() && !productService.error()) {
+        @if (productService.filteredProducts().length === 0) {
+        <app-empty-state [title]="emptyTitle" [message]="emptyMessage" [actionLabel]="clearFiltersLabel"
+            (actionClick)="productService.clearFilters()" />
+        } @else {
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-5">
+            @for (product of productService.filteredProducts(); track product.id) {
+            <app-card [product]="product" [isInCart]="cartService.isInCart(product.id)"
+                (addToCart)="onAddToCart($event)" (removeFromCart)="onRemoveFromCart($event)" />
+            }
+        </div>
+        }
+        }
+
+    </div>
+</div>
