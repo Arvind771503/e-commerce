@@ -1,0 +1,122 @@
+[
+  {
+    "id": 1,
+    "name": "Wireless Noise-Cancelling Headphones",
+    "price": 2499,
+    "image": "assets/products-img/wireless.jpg",
+    "category": "Electronics",
+    "description": "Premium over-ear headphones with active noise cancellation and 30hr battery life.",
+    "rating": 4.5,
+    "stock": 15
+  },
+  {
+    "id": 2,
+    "name": "Running Sneakers Pro",
+    "price": 3199,
+    "image": "assets/products-img/shoes.jpg",
+    "category": "Clothing",
+    "description": "Lightweight running shoes with responsive cushioning for all-day comfort.",
+    "rating": 4.3,
+    "stock": 8
+  },
+  {
+    "id": 3,
+    "name": "Clean Code — Robert Martin",
+    "price": 599,
+    "image": "assets/products-img/book.jpg",
+    "category": "Books",
+    "description": "A handbook of agile software craftsmanship — a must-read for every developer.",
+    "rating": 4.8,
+    "stock": 25
+  },
+  {
+    "id": 4,
+    "name": "Smart Watch Series 8",
+    "price": 8999,
+    "image": "assets/products-img/watch.jpg",
+    "category": "Electronics",
+    "description": "Advanced health tracking, GPS, and always-on display in a sleek design.",
+    "rating": 4.6,
+    "stock": 5
+  },
+  {
+    "id": 5,
+    "name": "Yoga Mat Premium",
+    "price": 1299,
+    "image": "assets/products-img/mat.jpg",
+    "category": "Sports",
+    "description": "Non-slip, eco-friendly TPE yoga mat with alignment markings. 6mm thickness.",
+    "rating": 4.4,
+    "stock": 20
+  },
+  {
+    "id": 6,
+    "name": "Minimalist Desk Lamp",
+    "price": 1799,
+    "image": "assets/products-img/lamp.jpg",
+    "category": "Home",
+    "description": "LED desk lamp with adjustable color temperature and USB charging port.",
+    "rating": 4.2,
+    "stock": 12
+  },
+  {
+    "id": 7,
+    "name": "Mechanical Keyboard TKL",
+    "price": 4599,
+    "image": "assets/products-img/keyboard.jpg",
+    "category": "Electronics",
+    "description": "Tenkeyless mechanical keyboard with Cherry MX switches and RGB backlighting.",
+    "rating": 4.7,
+    "stock": 7
+  },
+  {
+    "id": 8,
+    "name": "Cotton Oversized T-Shirt",
+    "price": 799,
+    "image": "assets/products-img/clothing.jpg",
+    "category": "Clothing",
+    "description": "100% organic cotton oversized tee, pre-washed for a soft, broken-in feel.",
+    "rating": 4.1,
+    "stock": 50
+  },
+  {
+    "id": 9,
+    "name": "Atomic Habits — James Clear",
+    "price": 499,
+    "image": "assets/products-img/mattbook.jpg",
+    "category": "Books",
+    "description": "Build good habits, break bad ones. The no.1 bestseller on behaviour change.",
+    "rating": 4.9,
+    "stock": 30
+  },
+  {
+    "id": 10,
+    "name": "Resistance Bands Set",
+    "price": 649,
+    "image": "assets/products-img/roller.jpg",
+    "category": "Sports",
+    "description": "Set of 5 resistance bands in varying strengths for home workouts.",
+    "rating": 4.3,
+    "stock": 40
+  },
+  {
+    "id": 11,
+    "name": "Ceramic Pour-Over Coffee Set",
+    "price": 2199,
+    "image": "assets/products-img/cup.jpg",
+    "category": "Home",
+    "description": "Hand-crafted ceramic dripper with glass carafe for the perfect morning brew.",
+    "rating": 4.5,
+    "stock": 9
+  },
+  {
+    "id": 12,
+    "name": "True Wireless Earbuds",
+    "price": 1899,
+    "image": "assets/products-img/headphone.jpg",
+    "category": "Electronics",
+    "description": "IPX5 waterproof earbuds with 24hr total playtime and quick-charge case.",
+    "rating": 4.4,
+    "stock": 18
+  }
+]
