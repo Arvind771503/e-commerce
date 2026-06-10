@@ -33,21 +33,21 @@ export class ContactComponent {
   private readonly fb = inject(FormBuilder);
   private readonly ui = inject(UiService);
 
-  readonly UserIcon  = User;
-  readonly MailIcon  = Mail;
+  readonly UserIcon = User;
+  readonly MailIcon = Mail;
   readonly PhoneIcon = Phone;
-  readonly MsgIcon   = MessageSquare;
-  readonly SendIcon  = Send;
+  readonly MsgIcon = MessageSquare;
+  readonly SendIcon = Send;
   readonly CheckIcon = CircleCheckBig;
 
-  readonly labels         = FORM_LABELS;
-  readonly placeholders   = FORM_PLACEHOLDERS;
-  readonly messages       = VALIDATION_MESSAGES;
-  readonly minMsgLength   = VALIDATION_RULES.MESSAGE_MIN_LENGTH;
-  readonly sendLabel      = BTN_LABELS.SEND_MESSAGE;
+  readonly labels = FORM_LABELS;
+  readonly placeholders = FORM_PLACEHOLDERS;
+  readonly messages = VALIDATION_MESSAGES;
+  readonly minMsgLength = VALIDATION_RULES.MESSAGE_MIN_LENGTH;
+  readonly sendLabel = BTN_LABELS.SEND_MESSAGE;
   readonly sendAnotherLabel = BTN_LABELS.SEND_ANOTHER;
-  readonly requiredMark   = FORM_LABELS.REQUIRED_MARK;
-  readonly requiredNote   = STATUS_TEXT.REQUIRED_FIELDS_NOTE;
+  readonly requiredMark = FORM_LABELS.REQUIRED_MARK;
+  readonly requiredNote = STATUS_TEXT.REQUIRED_FIELDS_NOTE;
   readonly successHeading = CONTACT_SUCCESS.HEADING;
   readonly successSubtext = CONTACT_SUCCESS.SUBTEXT;
 

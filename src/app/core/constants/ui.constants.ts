@@ -96,9 +96,9 @@ export const FORM_LABELS = {
 } as const;
 
 export const FORM_PLACEHOLDERS = {
-  NAME: 'e.g. Rahul Sharma',
-  EMAIL: 'e.g. rahul@example.com',
-  PHONE: 'e.g. 9876543210',
+  NAME: 'Full name',
+  EMAIL: 'Email address',
+  PHONE: 'Phone number',
   MESSAGE: 'Write your message here...',
   SEARCH: 'Search products...',
 } as const;

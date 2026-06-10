@@ -52,6 +52,6 @@ export class CartTableComponent {
 
   onImgError(event: Event): void {
     (event.target as HTMLImageElement).src =
-      'https://placehold.co/80x80/f1f5f9/94a3b8?text=?';
+      'assets/products-img/noimage.png';
   }
 }

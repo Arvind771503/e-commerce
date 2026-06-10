@@ -29,20 +29,20 @@ import { EmptyStateComponent } from '../../shared/components/empty-state/empty-s
 })
 export class ProductsComponent {
   readonly productService = inject(ProductService);
-  readonly cartService    = inject(CartService);
+  readonly cartService = inject(CartService);
 
   readonly SearchIcon = Search;
-  readonly XIcon      = X;
+  readonly XIcon = X;
   readonly FilterIcon = SlidersHorizontal;
 
-  readonly pageTitle         = PAGE_TITLES.PRODUCTS;
-  readonly pageSubtitle      = PAGE_SUBTITLES.PRODUCTS;
+  readonly pageTitle = PAGE_TITLES.PRODUCTS;
+  readonly pageSubtitle = PAGE_SUBTITLES.PRODUCTS;
   readonly searchPlaceholder = FORM_PLACEHOLDERS.SEARCH;
   readonly clearFiltersLabel = BTN_LABELS.CLEAR_FILTERS;
-  readonly retryLabel        = BTN_LABELS.RETRY;
-  readonly loadFailedLabel   = STATUS_TEXT.LOAD_FAILED;
-  readonly emptyTitle        = EMPTY_STATES.PRODUCTS.TITLE;
-  readonly emptyMessage      = EMPTY_STATES.PRODUCTS.MESSAGE;
+  readonly retryLabel = BTN_LABELS.RETRY;
+  readonly loadFailedLabel = STATUS_TEXT.LOAD_FAILED;
+  readonly emptyTitle = EMPTY_STATES.PRODUCTS.TITLE;
+  readonly emptyMessage = EMPTY_STATES.PRODUCTS.MESSAGE;
 
   onSearch(event: Event): void {
     this.productService.search((event.target as HTMLInputElement).value);

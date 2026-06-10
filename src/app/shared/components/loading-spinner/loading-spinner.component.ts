@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { STATUS_TEXT } from '../../../core/constants/ui.constants';
 
 @Component({
@@ -8,5 +8,5 @@ import { STATUS_TEXT } from '../../../core/constants/ui.constants';
   styleUrl: './loading-spinner.component.css'
 })
 export class LoadingSpinnerComponent {
-  readonly loadingText = STATUS_TEXT.LOADING;
+  loadingText = input<string>(STATUS_TEXT.LOADING);
 }
